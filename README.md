@@ -2,16 +2,16 @@
 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-This is the project repository for Udacity Self-Driving Car Nanodegree program's Project No. 2 Behavioral Cloning of Term 2 Sensor Fusion by Albert Killer, April 2017. 
+This is the project repository for **Project No. 1 Extended Kalman Filter**, part of Term 2 _Sensor Fusion_ of Udacity Self-Driving Car Nanodegree program, submitted by Albert Killer in April 2017. 
 
-An Extended Kalman Filter (EKF) was implemented in C++ to process simulated LIDA and RADAR measurements provided by Udacity. In doing so the position and velocity of an object, which is moving around the vehicle equiped with those sensors, is detected with high accuracy:
+An Extended Kalman Filter (EKF) was implemented in C++ to process simulated LIDAR and RADAR measurements provided by Udacity. In doing so the position and velocity of an object, moving around a vehicle equiped with those sensors, can be detected with high accuracy:
 
 ```
 Accuracy - RMSE:
-0.0972256
-0.0853761
-0.4508550
-0.4395880
+px: 0.0972256
+py: 0.0853761
+v~x~: 0.4508550
+vy: 0.4395880
 ```
 We use a Kalman Filter for LIDAR data. In order to handle the nonlinear measurement function _h_(_x_) of RADAR data we have to apply an Extended Kalmand Filter (EKF). The EKF uses a linear approximation of _h_(_x_) and applies First Order Taylor Expansion in order to get a Gaussian distribution again.    
 
