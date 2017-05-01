@@ -13,6 +13,6 @@ py: 0.0853761
 vx: 0.4508550
 vy: 0.4395880
 ```
-I use a Kalman Filter for LIDAR data. In order to handle the nonlinear measurement function _h_(_x_) of RADAR data I apply an Extended Kalmand Filter (EKF). The EKF uses a linear approximation of _h_(_x_) and applies First Order Taylor Expansion in order to retrieve a Gaussian distribution again.    
+I use a Kalman Filter for LIDAR data. In order to handle the **nonlinear measurement function** _h_(_x_) of RADAR data I apply an Extended Kalmand Filter (EKF). The EKF uses a **linear approximation** of _h_(_x_) and applies _First Order Taylor Expansion_ in order to retrieve a Gaussian distribution again.    
 
 Want to know more about Extended Kalman Filters? Have a look at this one: https://en.wikipedia.org/wiki/Extended_Kalman_filter
