@@ -10,6 +10,6 @@ An Extended Kalman Filter (EKF) was implemented in C++ to process simulated lida
 Accuracy - RMSE:
 0.0972256
 0.0853761
- 0.450855
- 0.439588
+0.4508550
+0.4395880
 ```
