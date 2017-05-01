@@ -33,9 +33,9 @@ void KalmanFilter::Update(const VectorXd &z) {
   VectorXd z_pred = H_ * x_;
   VectorXd y = z - z_pred;
   MatrixXd Ht = H_.transpose();
-  MatrixXd S = H_ * P_ * Ht + R_;
-  MatrixXd Si = S.inverse();
   MatrixXd PHt = P_ * Ht;
+  MatrixXd S = H_ * PHt + R_;
+  MatrixXd Si = S.inverse();
   MatrixXd K = PHt * Si;
 
   // New estimate
@@ -69,6 +69,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   if(fabs(px) < 0.0001){
     cout << "Error while converting vector x_ to polar coordinates: Division by Zero" << endl;
   }
+  // TODO: Maybe add condition for atan2(0,0) ?
   else {
     phi = atan2(py, px);
     // No need to normalize angle at this point
@@ -89,17 +90,22 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   VectorXd y = z - h; // Using h instead of Jacobian Hj_ here!
 
   // Apply angle normalization AFTER comparing prediction with sensor data y = z - h(x)
+
+
+
   while (y(1)>PI) {
     y(1) -= 2 * PI;
   }
   while (y(1)<-PI) {
     y(1) += 2 * PI;
   }
+  // Alternative:
+  // this->NormalizeAngle(y(1));
 
   MatrixXd Ht = H_.transpose(); // Using Jacobian Hj_ here
-  MatrixXd S = H_ * P_ * Ht + R_; // Using Jacobian Hj_ here
-  MatrixXd Si = S.inverse();
   MatrixXd PHt = P_ * Ht;
+  MatrixXd S = H_ * PHt + R_; // Using Jacobian Hj_ here
+  MatrixXd Si = S.inverse();
   MatrixXd K = PHt * Si; // Using Jacobian Hj_ here
 
   // New estimate
@@ -109,3 +115,15 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   P_ = (I - K * H_) * P_; // Using Jacobian Hj_ here
 
 }
+
+/*
+float KalmanFilter::NormalizeAngle(float pValue)
+{
+  if (fabs(pValue) > M_PI)
+  {
+    pValue -= round(pValue / (2.0 * M_PI)) * (2.0 * M_PI);
+    return pValue;
+  }
+}
+*/
+

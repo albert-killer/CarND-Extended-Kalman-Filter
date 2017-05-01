@@ -64,6 +64,12 @@ public:
    */
   void UpdateEKF(const Eigen::VectorXd &z);
 
+  /**
+   * Normalizes the angles
+   * @param z The measurement at k+1
+
+  float NormalizeAngle(float pValue);
+   */
 };
 
 #endif /* KALMAN_FILTER_H_ */

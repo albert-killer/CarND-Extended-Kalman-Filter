@@ -118,6 +118,15 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   float dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0; //dt - expressed in seconds
   previous_timestamp_ = measurement_pack.timestamp_;
 
+  /**
+  * TODO: When dt is small (less than 0.001 for example),
+  * you can skip the prediction step and effectively run
+  * multiple sequential update steps for the 'same' timestamp.
+  * This has the benefit of being a bit more efficient
+  * as it allows you to avoid the extra prediction step calculations
+  * including the update of F_ and calculation of Q_ above.
+  */
+
   // Integrate time dt into F matrix
   ekf_.F_ << 1, 0, dt, 0,
           0, 1, 0, dt,
