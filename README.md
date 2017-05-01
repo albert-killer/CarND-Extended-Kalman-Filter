@@ -15,4 +15,4 @@ Accuracy - RMSE:
 ```
 We use a Kalman Filter for LIDAR data. In order to handle the nonlinear measurement function _h_(_x_) of RADAR data we have to apply an Extended Kalmand Filter (EKF). The EKF uses a linear approximation of _h_(_x_) and applies First Order Taylor Expansion in order to get a Gaussian distribution again.    
 
-You want to know more about Extended Kalman Filter? --> https://en.wikipedia.org/wiki/Extended_Kalman_filter
+You want to know more about Extended Kalman Filters? Have a look: https://en.wikipedia.org/wiki/Extended_Kalman_filter
