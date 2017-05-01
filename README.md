@@ -10,7 +10,7 @@ An Extended Kalman Filter (EKF) was implemented in C++ to process simulated LIDA
 Accuracy - RMSE:
 px: 0.0972256
 py: 0.0853761
-v~x~: 0.4508550
+vx: 0.4508550
 vy: 0.4395880
 ```
 We use a Kalman Filter for LIDAR data. In order to handle the nonlinear measurement function _h_(_x_) of RADAR data we have to apply an Extended Kalmand Filter (EKF). The EKF uses a linear approximation of _h_(_x_) and applies First Order Taylor Expansion in order to get a Gaussian distribution again.    
